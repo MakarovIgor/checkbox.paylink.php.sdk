@@ -12,6 +12,7 @@ class PurchaseResult
     private string $paymentSystem;
     private string $receiptNo;
     private string $acquirerAndSeller;
+    private string $code;
     private string $commission;
 
     public function __construct(
@@ -23,6 +24,7 @@ class PurchaseResult
         string $paymentSystem,
         string $receiptNo,
         string $acquirerAndSeller,
+        string $code,
         string $commission
     ) {
         $this->terminal = $terminal;
@@ -33,7 +35,13 @@ class PurchaseResult
         $this->paymentSystem = $paymentSystem;
         $this->receiptNo = $receiptNo;
         $this->acquirerAndSeller = $acquirerAndSeller;
+        $this->code = $code;
         $this->commission = $commission;
+    }
+
+    public function code(): string
+    {
+        return $this->code;
     }
 
     public function acquirerAndSeller(): string
