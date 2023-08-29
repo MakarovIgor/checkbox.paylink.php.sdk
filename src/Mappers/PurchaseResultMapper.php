@@ -19,7 +19,6 @@ class PurchaseResultMapper
             $data['payment_system'],
             $data['receipt_no'],
             $data['acquirer_and_seller'],
-            isset($data['code']) ?? '',
             isset($data['commission']) ?? 0
         );
     }
