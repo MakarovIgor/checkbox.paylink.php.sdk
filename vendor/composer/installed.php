@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'igormakarov/checkbox.paylink.php.sdk',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => NULL,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => 'fc2f0b15674461bced39eb43a8a2b482e12c4f23',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'guzzlehttp/guzzle' => array(
-            'pretty_version' => '7.7.x-dev',
-            'version' => '7.7.9999999.9999999-dev',
-            'reference' => '21314fd3f7b673044ec49b7a0b1d0b2ede2d57ff',
+            'pretty_version' => '7.8.x-dev',
+            'version' => '7.8.9999999.9999999-dev',
+            'reference' => 'deed4d9504842a5cee61601801c2ad5f21011b91',
             'type' => 'library',
             'install_path' => __DIR__ . '/../guzzlehttp/guzzle',
             'aliases' => array(),
@@ -22,7 +22,7 @@
         'guzzlehttp/promises' => array(
             'pretty_version' => '2.0.x-dev',
             'version' => '2.0.9999999.9999999-dev',
-            'reference' => '111166291a0f8130081195ac4556a5587d7f1b5d',
+            'reference' => '71b12f952d8be69a239989db2fe08314a5189e3b',
             'type' => 'library',
             'install_path' => __DIR__ . '/../guzzlehttp/promises',
             'aliases' => array(),
@@ -31,16 +31,16 @@
         'guzzlehttp/psr7' => array(
             'pretty_version' => '2.6.x-dev',
             'version' => '2.6.9999999.9999999-dev',
-            'reference' => '8bd7c33a0734ae1c5d074360512beb716bef3f77',
+            'reference' => 'be45764272e8873c72dbe3d2edcfdfcc3bc9f727',
             'type' => 'library',
             'install_path' => __DIR__ . '/../guzzlehttp/psr7',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
         'igormakarov/checkbox.paylink.php.sdk' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => NULL,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => 'fc2f0b15674461bced39eb43a8a2b482e12c4f23',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
