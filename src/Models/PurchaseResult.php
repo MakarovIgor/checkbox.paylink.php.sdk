@@ -12,8 +12,8 @@ class PurchaseResult
     private string $paymentSystem;
     private string $receiptNo;
     private string $acquirerAndSeller;
-    private string $code;
-    private string $commission;
+    private int $code;
+    private int $commission;
 
     public function __construct(
         string $terminal,
@@ -24,8 +24,8 @@ class PurchaseResult
         string $paymentSystem,
         string $receiptNo,
         string $acquirerAndSeller,
-        string $code,
-        string $commission
+        int $code,
+        int $commission
     ) {
         $this->terminal = $terminal;
         $this->rrn = $rrn;
