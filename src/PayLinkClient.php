@@ -4,6 +4,7 @@ namespace igormakarov\PayLink;
 
 use Exception;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ServerException;
 use igormakarov\PayLink\Mappers\DeviceMapper;
 use igormakarov\PayLink\Mappers\PurchaseResultMapper;
 use igormakarov\PayLink\Models\Device\Device;
@@ -12,6 +13,7 @@ use igormakarov\PayLink\Models\FailurePurchaseException;
 use igormakarov\PayLink\Models\PurchaseResult;
 use igormakarov\PayLink\Routes\Route;
 use igormakarov\PayLink\Routes\Routes;
+use Throwable;
 
 class PayLinkClient
 {
@@ -82,7 +84,7 @@ class PayLinkClient
         if ($data['success']) {
             return PurchaseResultMapper::newInstance($data);
         }
-        throw new FailurePurchaseException($data['error'], $data['code'], $data['result']);
+        throw new FailurePurchaseException($data['error'], $data['code'], $data['result'] ?? []);
     }
 
     /**
@@ -99,7 +101,9 @@ class PayLinkClient
             if (is_string($responseData)) { //при реєстрації пристрою чомусь json обгорнутий два рази (строка в строці)
                 return json_decode($responseData, true);
             }
-        } catch (\Throwable $exception) {
+        } catch (ServerException $exception) {
+            return json_decode($exception->getResponse()->getBody()->getContents(), true);
+        } catch (Throwable $exception) {
             throw new Exception($exception->getMessage(), $exception->getCode());
         }
 
