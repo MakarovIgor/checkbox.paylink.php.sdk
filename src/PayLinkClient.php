@@ -7,6 +7,7 @@ use GuzzleHttp\Client;
 use igormakarov\PayLink\Mappers\DeviceMapper;
 use igormakarov\PayLink\Mappers\PurchaseResultMapper;
 use igormakarov\PayLink\Models\Device\Device;
+use igormakarov\PayLink\Models\Device\DeviceNotFoundException;
 use igormakarov\PayLink\Models\FailurePurchaseException;
 use igormakarov\PayLink\Models\PurchaseResult;
 use igormakarov\PayLink\Routes\Route;
@@ -51,7 +52,16 @@ class PayLinkClient
      */
     public function getDevice($deviceId): Device
     {
-        return DeviceMapper::newInstance($this->sendRequest($this->routes->getDevice($deviceId)));
+        try {
+            return DeviceMapper::newInstance(
+                $this->sendRequest($this->routes->getDevice($deviceId))
+            );
+        } catch (Exception $exception) {
+            if ($exception->getCode() == 404) {
+                throw new DeviceNotFoundException("Device not found");
+            }
+            throw $exception;
+        }
     }
 
     /**
@@ -90,7 +100,7 @@ class PayLinkClient
                 return json_decode($responseData, true);
             }
         } catch (\Throwable $exception) {
-            throw new Exception($exception->getMessage());
+            throw new Exception($exception->getMessage(), $exception->getCode());
         }
 
         return $responseData;

@@ -23,4 +23,20 @@ class PurchaseResultMapper
             isset($data['commission']) ?? 0
         );
     }
+
+    public static function toArray(PurchaseResult $purchaseResult): array
+    {
+        return [
+            'terminal' => $purchaseResult->terminal(),
+            'rrn' => $purchaseResult->rrn(),
+            'card_mask' => $purchaseResult->cardMask(),
+            'card_name' => $purchaseResult->cardName(),
+            'auth_code' => $purchaseResult->authCode(),
+            'payment_system' => $purchaseResult->paymentSystem(),
+            'receipt_no' => $purchaseResult->receiptNo(),
+            'acquirer_and_seller' => $purchaseResult->acquirerAndSeller(),
+            'code' => $purchaseResult->code(),
+            'commission' => $purchaseResult->commission()
+        ];
+    }
 }
