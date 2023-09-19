@@ -4,26 +4,26 @@ namespace igormakarov\PayLink\Models;
 
 class PurchaseResult
 {
-    private string $terminal;
-    private string $rrn;
-    private string $cardMask;
-    private string $cardName;
-    private string $authCode;
-    private string $paymentSystem;
-    private string $receiptNo;
-    private string $acquirerAndSeller;
+    private ?string $terminal;
+    private ?string $rrn;
+    private ?string $cardMask;
+    private ?string $cardName;
+    private ?string $authCode;
+    private ?string $paymentSystem;
+    private ?string $receiptNo;
+    private ?string $acquirerAndSeller;
     private int $code;
     private int $commission;
 
     public function __construct(
-        string $terminal,
-        string $rrn,
-        string $cardMask,
-        string $cardName,
-        string $authCode,
-        string $paymentSystem,
-        string $receiptNo,
-        string $acquirerAndSeller,
+        ?string $terminal,
+        ?string $rrn,
+        ?string $cardMask,
+        ?string $cardName,
+        ?string $authCode,
+        ?string $paymentSystem,
+        ?string $receiptNo,
+        ?string $acquirerAndSeller,
         int $code,
         int $commission
     ) {

@@ -10,6 +10,7 @@ class PurchaseResultMapper
 {
     public static function newInstance(array $data): PurchaseResult
     {
+        var_dump($data);
         return new PurchaseResult(
             $data['terminal'],
             $data['rrn'],

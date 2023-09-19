@@ -82,7 +82,7 @@ class PayLinkClient
     {
         $data = $this->sendRequest($this->routes->purchase($deviceId, $amount));
         if ($data['success']) {
-            return PurchaseResultMapper::newInstance($data);
+            return PurchaseResultMapper::newInstance($data['result']);
         }
         throw new FailurePurchaseException($data['error'], $data['code'], $data['result'] ?? []);
     }
