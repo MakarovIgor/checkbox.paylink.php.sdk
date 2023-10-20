@@ -2,7 +2,6 @@
 
 namespace igormakarov\PayLink;
 
-use Exception;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ServerException;
 use igormakarov\PayLink\Mappers\DeviceMapper;
@@ -27,7 +26,7 @@ class PayLinkClient
     }
 
     /**
-     * @throws Exception
+     * @throws Throwable
      */
     public function getDevices(): array
     {
@@ -42,7 +41,7 @@ class PayLinkClient
     }
 
     /**
-     * @throws Exception
+     * @throws Throwable
      */
     public function registerDevice(Device $device): Device
     {
@@ -50,7 +49,7 @@ class PayLinkClient
     }
 
     /**
-     * @throws Exception
+     * @throws Throwable
      */
     public function getDevice($deviceId): Device
     {
@@ -58,7 +57,7 @@ class PayLinkClient
             return DeviceMapper::newInstance(
                 $this->sendRequest($this->routes->getDevice($deviceId))
             );
-        } catch (Exception $exception) {
+        } catch (Throwable $exception) {
             if ($exception->getCode() == 404) {
                 throw new DeviceNotFoundException("Device not found");
             }
@@ -67,7 +66,7 @@ class PayLinkClient
     }
 
     /**
-     * @throws Exception
+     * @throws Throwable
      */
     public function saveDevices()
     {
@@ -76,7 +75,7 @@ class PayLinkClient
 
     /**
      * @throws FailurePurchaseException
-     * @throws Exception
+     * @throws Throwable
      */
     public function purchase(string $deviceId, int $amount): PurchaseResult
     {
@@ -88,7 +87,7 @@ class PayLinkClient
     }
 
     /**
-     * @throws Exception
+     * @throws Throwable
      */
     protected function sendRequest(Route $route): array
     {
@@ -104,7 +103,7 @@ class PayLinkClient
         } catch (ServerException $exception) {
             return json_decode($exception->getResponse()->getBody()->getContents(), true);
         } catch (Throwable $exception) {
-            throw new Exception($exception->getMessage(), $exception->getCode());
+            throw $exception;
         }
 
         return $responseData;
