@@ -111,7 +111,7 @@ class PayLinkClient
 
     protected function prepareRequestBody(Route $route): array
     {
-        return array_merge($route->body(), ['timeout' => 120]);
+        return array_merge($route->body(), ['timeout' => 120, 'connect_timeout' => 5]);
     }
 
 }
