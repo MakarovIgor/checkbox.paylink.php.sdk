@@ -70,6 +70,11 @@ class Device
         return $this->properties;
     }
 
+    public function isConnected(): bool
+    {
+        return $this->connected;
+    }
+
     public function toArray(): array
     {
         return [
