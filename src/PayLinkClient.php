@@ -2,9 +2,7 @@
 
 namespace igormakarov\PayLink;
 
-use Exception;
 use GuzzleHttp\Client;
-use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ServerException;
 use igormakarov\PayLink\Mappers\DeviceMapper;
 use igormakarov\PayLink\Mappers\PurchaseResultMapper;
@@ -92,19 +90,9 @@ class PayLinkClient
      */
     public function connect(string $deviceId): Device
     {
-        try {
-            return DeviceMapper::newInstance(
-                $this->sendRequest($this->routes->connect($deviceId))
-            );
-        } catch (ClientException $exception) {
-            if($exception->getCode() == 422) {
-                $message = json_decode($exception->getResponse()->getBody()->getContents(), true);
-                throw new Exception($message['msg'], $exception->getCode());
-            }
-            throw $exception;
-        } catch (Throwable $exception) {
-            throw $exception;
-        }
+        return DeviceMapper::newInstance(
+            $this->sendRequest($this->routes->connect($deviceId))
+        );
     }
 
     /**
