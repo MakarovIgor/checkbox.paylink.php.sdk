@@ -44,4 +44,14 @@ class Routes
         $body = ['body' => json_encode(['amount' => $amount])];
         return new Route($this->url . "pos/{$deviceId}/purchase", "POST", $body);
     }
+
+    public function connect(string $deviceId): Route
+    {
+        return new Route($this->url . "device/connect/{$deviceId}", "POST");
+    }
+
+    public function disconnect(string $deviceId): Route
+    {
+        return new Route($this->url . "device/{$deviceId}", "DELETE");
+    }
 }

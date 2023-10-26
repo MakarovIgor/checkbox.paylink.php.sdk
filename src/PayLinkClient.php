@@ -85,6 +85,23 @@ class PayLinkClient
         }
         throw new FailurePurchaseException($data['error'], $data['code'], $data['result'] ?? []);
     }
+    /**
+     * @throws Throwable
+     */
+    public function connect(string $deviceId): Device
+    {
+        return DeviceMapper::newInstance(
+            $this->sendRequest($this->routes->connect($deviceId))
+        );
+    }
+
+    /**
+     * @throws Throwable
+     */
+    public function disconnect(string $deviceId): void
+    {
+        $this->sendRequest($this->routes->disconnect($deviceId));
+    }
 
     /**
      * @throws Throwable
