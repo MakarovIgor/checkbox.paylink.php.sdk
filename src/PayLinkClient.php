@@ -90,9 +90,16 @@ class PayLinkClient
      */
     public function connect(string $deviceId): Device
     {
-        return DeviceMapper::newInstance(
-            $this->sendRequest($this->routes->connect($deviceId))
-        );
+        try {
+            return DeviceMapper::newInstance(
+                $this->sendRequest($this->routes->connect($deviceId))
+            );
+        } catch (Throwable $exception) {
+            if ($exception->getCode() == 404) {
+                throw new DeviceNotFoundException("Device not found");
+            }
+            throw $exception;
+        }
     }
 
     /**
