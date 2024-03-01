@@ -38,7 +38,7 @@ $сlient->getDevices();
 public function getDevices(): array
 ```
 
-####Отримання даних терміналу p PayLink по його ІД 
+#### Отримання даних терміналу p PayLink по його ІД 
 ```php
 $сlient->getDevice('your-device-uu-id');
 
@@ -47,7 +47,7 @@ public function getDevice($deviceId): Device
 > $deviceId - ІД терміналу
 
 
-####Підключення до терміналу/перевірка з'єднання
+#### Підключення до терміналу/перевірка з'єднання
 ```php
 $сlient->ping('your-device-uu-id');
 
@@ -55,7 +55,7 @@ public function ping(string $deviceId): bool
 ```
 > $deviceId - ІД терміналу
 
-####Відправка грошей на оплату картою в термінал, перед цим з'єднує PayLink з терміналом якщо підключення не було 
+#### Відправка грошей на оплату картою в термінал, перед цим з'єднує PayLink з терміналом якщо підключення не було 
 ```php
 $сlient->purchase("your-device-uu-id", 1);
 
@@ -65,7 +65,7 @@ public function purchase(string $deviceId, int $amount): PurchaseResult
 > $amount - кількість грошей(1 = одна копійка, 100 = одна гривня) 
 
 
-###Простий приклад
+### Простий приклад
 
 ```php
 use igormakarov\PayLink\HostConfig;
