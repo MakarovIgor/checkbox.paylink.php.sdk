@@ -1,5 +1,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-# checkbox.paylink.php.sdk - проста бібліотека для роботи з POS терміналами через Paylink REST API як в локальній мережі, так і через інтеграції з web-CRM або інших.  
+# checkbox.paylink.php.sdk - проста бібліотека для роботи з POS терміналами через Paylink REST API 
+
+Бібліотека для роботи з POS терміналами через Paylink REST API як в локальній мережі, так і через інтеграції з web-CRM або інших.  
+
 
 #### Увага:
 
