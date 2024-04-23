@@ -94,7 +94,7 @@ class PayLinkClient
     public function ping(string $deviceId): bool
     {
         $result = $this->sendRequest($this->routes->ping($deviceId));
-        var_dump($result);
+
         if (!empty($result['error'])) {
             throw new Exception($result['error']);
         }
